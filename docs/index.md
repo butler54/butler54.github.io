@@ -1,6 +1,5 @@
 # Hi there!
 
-
 I'm a Chief Archtect at [Red Hat](https://redhat.com) working in the Asia Pacific CTO Office.
 
 My background is as an applied researcher who stumbled into the world of software  via MATLAB and Fortran.
