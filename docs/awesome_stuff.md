@@ -10,10 +10,10 @@ A small list of *awesome* things that I have found along my techy journey.
 - [Direnv](https://direnv.net/) - how could I live without after finding it, contextual credentials based on terminal directory
 
 
-## Documenation tools
+## Documentation tools
 
 - [Mkdocs](https://www.mkdocs.org/) - python based documentation generation
-- [Mkdocs Material](https://squidfunk.github.io/mkdocs-material/)
+- [Mkdocs Material](https://squidfunk.github.io/mkdocs-material/) - ever expanding theme
 
 ## Linting 
 - [`pre-commit`](https://pre-commit.com/)

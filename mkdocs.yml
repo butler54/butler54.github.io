@@ -72,7 +72,7 @@ plugins:
 repo_name: butler54/butler54.github.io
 repo_url: https://github.com/butler54/butler54.github.io
 site_description: Chris Butler's blog
-site_name: Chris's Blog
+site_name: Chris's blog
 site_url: https://chris.thebutlers.me/
 edit_uri: https://github.com/butler54/butler54.github.io/edit/main/docs
 
@@ -83,6 +83,7 @@ theme:
   features:
   - content.code.annotate
   - navigation.tracking
+  - navigation.top
   - navigation.indexes
   - navigation.tabs
   - navigation.tabs.sticky
