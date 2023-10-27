@@ -1,0 +1,112 @@
+markdown_extensions:
+- attr_list
+- admonition
+- footnotes
+- markdown_include.include
+- pymdownx.emoji:
+    emoji_index: !!python/name:material.extensions.emoji.twemoji
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+- pymdownx.magiclink
+- pymdownx.superfences
+- pymdownx.tabbed
+- pymdownx.tasklist
+- pymdownx.highlight
+- pymdownx.inlinehilite
+- pymdownx.snippets
+- pymdownx.details
+- pymdownx.critic
+- pymdownx.caret
+- pymdownx.keys
+- pymdownx.mark
+- pymdownx.tilde
+- toc:
+    permalink: ¤
+plugins:
+- blog:
+    blogdir: .
+- social
+- search
+- git-revision-date-localized
+- awesome-pages
+- macros
+- unused_files:
+    strict: True
+    file_types:
+    - md
+    - jpg
+    - xlsx
+    - png
+    - svg
+    - pdf
+    - csv
+    - pptx
+    - txt
+    - yaml
+    - yml
+    excluded_files:
+    - .pages
+- htmlproofer:
+    enabled: True
+    validate_rendered_template: True
+    raise_error: True
+- spellcheck:
+    backends:
+    - codespell:
+        dictionaries: [clear, rare]
+    known_words: ../known-words.txt
+    # ignore words in <code> tags
+    ignore_code: yes
+    # minimum length of words to consider
+    min_length: 3
+    # maximum number of capital letters in a word
+    max_capital: 1
+    # keep unicode characters
+    allow_unicode: no
+    # skip_files:
+    # - credits.md
+    # - coverage.md
+    # whether to only check in strict mode
+    #strict_only: yes
+- tags:
+repo_name: butler54/butler54.github.io
+repo_url: https://github.com/butler54/butler54.github.io
+site_description: Chris Butler's blog
+site_name: Chris's Blog
+site_url: https://chris.thebutlers.me/
+edit_url: https://github.com/butler54/butler54.github.io/edit/main/docs
+
+theme:
+  locale: en # The locale for time localizations, default: system's locale
+  time_format: '%Y-%m-%d %H:%M:%S' # The format used to display the time
+  meta_time_format: '%Y-%m-%d %H:%M:%S'
+  features:
+  - content.code.annotate
+  - navigation.tracking
+  - navigation.top
+  - navigation.indexes
+  - navigation.tabs
+  - navigation.tabs.sticky
+  - header.autohide
+  - content.action.edit
+  - content.action.view
+  - content.code.copy
+  name: material
+  font:
+    text: Red Hat Display
+    code: Red Hat Mono
+  palette:
+  # Palette toggle for light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+  # Palette toggle for dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    toggle:
+      icon: material/brightness-4
+      name: Switch to light mode
+extra:
+  generator: false
+copyright: "Copyright &copy; 2023 Chris Butler. \n"
