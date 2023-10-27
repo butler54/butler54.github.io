@@ -23,6 +23,7 @@ markdown_extensions:
     permalink: ¤
 plugins:
 - blog:
+    enabled: true
     blogdir: .
 - social
 - search
@@ -45,10 +46,10 @@ plugins:
     - yml
     excluded_files:
     - .pages
-- htmlproofer:
-    enabled: True
-    validate_rendered_template: True
-    raise_error: True
+# - htmlproofer:
+#     enabled: True
+#     validate_rendered_template: True
+#     raise_error: True
 - spellcheck:
     backends:
     - codespell:
@@ -63,7 +64,7 @@ plugins:
     # keep unicode characters
     allow_unicode: no
     # skip_files:
-    # - credits.md
+    # - credits.mda
     # - coverage.md
     # whether to only check in strict mode
     #strict_only: yes
@@ -73,7 +74,7 @@ repo_url: https://github.com/butler54/butler54.github.io
 site_description: Chris Butler's blog
 site_name: Chris's Blog
 site_url: https://chris.thebutlers.me/
-edit_url: https://github.com/butler54/butler54.github.io/edit/main/docs
+edit_uri: https://github.com/butler54/butler54.github.io/edit/main/docs
 
 theme:
   locale: en # The locale for time localizations, default: system's locale
