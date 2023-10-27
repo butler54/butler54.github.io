@@ -24,7 +24,7 @@ markdown_extensions:
 plugins:
 - blog:
     enabled: true
-    blogdir: .
+    blog_dir: blog
 - social
 - search
 - git-revision-date-localized
@@ -83,7 +83,6 @@ theme:
   features:
   - content.code.annotate
   - navigation.tracking
-  - navigation.top
   - navigation.indexes
   - navigation.tabs
   - navigation.tabs.sticky
