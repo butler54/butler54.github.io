@@ -5,6 +5,7 @@ categories:
   - validated-patterns
   - gitops
   - openshift
+  - demos
 ---
 
 # Validated patterns for demos
@@ -60,7 +61,7 @@ The result is that the template helps decrease the risk of developers committing
 
 ## Envionmental overrides
 
-The `values.yaml` files provides the high level abstration of what needs to be deployed onto a cluster. For example `values-hub.yaml` example below deploys ACM, OpenShift pipelines ([Tekton](https://tekton.dev/)) and a pipelines Helm chart that contains Tekton pipeline definitions.
+The `values.yaml` files provides the high level abstraction of what needs to be deployed onto a cluster. For example `values-hub.yaml` example below deploys ACM, OpenShift pipelines ([Tekton](https://tekton.dev/)) and a pipelines Helm chart that contains Tekton pipeline definitions.
 
 ```yaml
 clusterGroup:
@@ -72,19 +73,17 @@ clusterGroup:
     - vault
     - golang-external-secrets
     - devops
-
+  # Operator subscriptions
   subscriptions:
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
       channel: release-2.8
-      #csv: advanced-cluster-management.v2.6.1
 
     openshift-pipelines:
       name: openshift-pipelines-operator-rh
       namespace: openshift-operators
-
-
+  # OCP project
   projects:
     - hub
     - devops
@@ -115,7 +114,7 @@ clusterGroup:
             - /secrets
 ```
 
-In the case of my pipelines it requests a `storageclass` by name in the pipeines Helm chart. `storageclasses` typically have different names across different cloud providers which means we need provider specific overrides.
+In the case of my pipelines it requests a `storageclass` by name in the pipelines Helm chart. `storageclasses` typically have different names across different cloud providers which means we need provider specific overrides.
 The validated patterns operator provides a framework where a combination of `clusterGroup`, cloud provider and OpenShift version. This gives you value files of the format:
 
 - `values-global.yaml` default applies everywhere,
