@@ -59,7 +59,7 @@ A nice feature of validated patterns sit that the secrets bootstrapping when cal
 Instead it looks for files in a users [home directory](https://github.com/validatedpatterns/common/tree/main/ansible/roles/vault_utils#values-secret-file-format) which is highly unlikely to be managed by git.
 The result is that the template helps decrease the risk of developers committing secrets - as there is no reason to have the secrets in the repository at any point in time.
 
-## Envionmental overrides
+## Environmental overrides
 
 The `values.yaml` files provides the high level abstraction of what needs to be deployed onto a cluster. For example `values-hub.yaml` example below deploys ACM, OpenShift pipelines ([Tekton](https://tekton.dev/)) and a pipelines Helm chart that contains Tekton pipeline definitions.
 
