@@ -32,17 +32,14 @@ The result from an operationl perspective once I have a cluster the only steps I
 1. `./pattern.sh make install`.
 
 ??? info "Podman and bootstrapping on mac os"
-To run the bootstrap scripts validated patterns presumes that you are using `podman`.
+    To run the bootstrap scripts validated patterns presumes that you are using `podman`.
+    Using [brew](https://brew.sh/):
 
-````
-Using [brew](https://brew.sh/):
-
-```bash
-brew install podman
-podman machine init
-podman machine start
-```
-````
+    ```bash
+    brew install podman
+    podman machine init
+    podman machine start
+    ```
 
 All I have to do is wait and the environment will roll itself out automatically. Using [OpenShift GitOps](https://docs.openshift.com/gitops/latest/understanding_openshift_gitops/about-redhat-openshift-gitops.html) ([Argo CD](https://argo-cd.readthedocs.io/en/stable/)) the deployment rollout can easily be monitored and triaged for errors.
 
@@ -128,22 +125,26 @@ The validated patterns operator provides a framework where a combination of `clu
     - `values-AWS-4.13.yaml` or `values-IBMCloud.yaml` or `values-myClusterGroup.yaml`
 
 ??? info "clusterGroup"
-`clusterGroup` is a label used together with RHACM particularly for clusters beyond the first.
-Applying:
+    `clusterGroup` is a label used together with RHACM particularly for clusters beyond the first.
+    Applying:
 
-```
-`oc label managedclusters.cluster.open-cluster-management.io/<your-cluster> clusterGroup=<managed-cluster-group>` 
+    `oc label managedclusters.cluster.open-cluster-management.io/<your-cluster> clusterGroup=<managed-cluster-group>`
 
-will result in the correct `clusterGroup` payload being applied ot a given cluster.
-```
+    will result in the correct `clusterGroup` payload being applied ot a given cluster.
 
 In this case my pipelines Helm chart presumes that the storageclass is defined in `{{ .Values.cloudProvider.storageClass }}` so to setup for both IBM Cloud and AWS the following files were defined:
 
-!!! info `values-AWS.yaml`
-`yaml     cloudProvider:       storageClass: gp3-csi     `
+!!! info "`values-AWS.yaml`"
+    ```yaml
+    cloudProvider:
+      storageClass: gp3-csi
+    ```
 
-!!! info `values-IBMCloud.yaml`
-`yaml     cloudProvider:       storageClass: ibmc-vpc-block-10iops-tier     `
+!!! info "`values-IBMCloud.yaml`"
+    ```yaml
+    cloudProvider:
+      storageClass: ibmc-vpc-block-10iops-tier
+    ```
 
 These override any values in the Helm chart's default `Values.yaml` file.
 

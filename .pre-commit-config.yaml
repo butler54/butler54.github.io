@@ -17,3 +17,4 @@ repos:
     - mdformat-config
     - mdformat-frontmatter
     - mdformat-gfm
+    - mdformat-admon

@@ -29,7 +29,6 @@ plugins:
 - search
 - git-revision-date-localized
 - awesome-pages
-- macros
 - unused_files:
     strict: True
     file_types:
