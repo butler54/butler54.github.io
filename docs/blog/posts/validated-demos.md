@@ -123,10 +123,15 @@ The validated patterns operator provides a framework where a combination of `clu
 
 - `values-global.yaml` default applies everywhere,
 - `values-hub.yaml` hub for your 'hub' RHACM cluster,
-- `sharedValueFiles`, defined in `values-hub.yaml` where you can define a list override files which can be based on global variables such as:
-  - `clusterGroup`
-  - `clusterPlatform` e.g. AWS, Azure, IBMCloud
-  - `clusterVersion` e.g. 4.13
+- `sharedValueFiles`
+
+`sharedValueFiles` is an list defined in `values-hub.yaml` where you can define an ordered list by which files are overload the other values files. Within this environment we can use contextual information about the cluster such as:
+
+- `clusterGroup` - a user provided label.
+- `clusterPlatform` e.g. AWS, Azure, IBMCloud
+- `clusterVersion` e.g. 4.13
+
+to pick up override files if the exist.
 
 ??? info "clusterGroup"
     `clusterGroup` is a label used together with RHACM particularly for clusters beyond the first.
@@ -136,7 +141,7 @@ The validated patterns operator provides a framework where a combination of `clu
 
     will result in the correct `clusterGroup` payload being applied ot a given cluster.
 
-In this case my pipelines Helm chart presumes that the storageclass is defined in `{{ .Values.cloudProvider.storageClass }}` so to setup for both IBM Cloud and AWS using the `sharedValuesFiles` defined in the example yaml file above I created two files to contain the overrides:
+In this case my `pipelines` Helm chart presumes that the storageclass is defined in `{{ .Values.cloudProvider.storageClass }}` so to setup for both IBM Cloud and AWS using the `sharedValuesFiles` defined in the example yaml file above I created two files to contain the overrides:
 
 !!! info "`overrides/values-AWS.yaml`"
     ```yaml
