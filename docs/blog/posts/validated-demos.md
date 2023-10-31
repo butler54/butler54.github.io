@@ -112,16 +112,21 @@ clusterGroup:
           jsonPointers:
             - /imagePullSecrets
             - /secrets
+  sharedValueFiles:
+    - /overrides/values-{{ $.Values.global.clusterPlatform }}.yaml
+    - /overrides/values-{{ $.Values.global.clusterPlatform }}-{{ $.Values.global.clusterVersion
+      }}.yaml
 ```
 
 In the case of my pipelines it requests a `storageclass` by name in the pipelines Helm chart. `storageclasses` typically have different names across different cloud providers which means we need provider specific overrides.
 The validated patterns operator provides a framework where a combination of `clusterGroup`, cloud provider and OpenShift version. This gives you value files of the format:
 
 - `values-global.yaml` default applies everywhere,
-- `values-hub.yaml` hub is the defacto standard for your 'hub' RHACM cluster,
-- `values-{clusterGroup}-{cloudProvider}-{OpenShift Version}.yaml`
-  - Any combination of cloud provider, cluster group and OpenShift can be used e.g.
-    - `values-AWS-4.13.yaml` or `values-IBMCloud.yaml` or `values-myClusterGroup.yaml`
+- `values-hub.yaml` hub for your 'hub' RHACM cluster,
+- `sharedValueFiles`, defined in `values-hub.yaml` where you can define a list override files which can be based on global variables such as:
+  - `clusterGroup`
+  - `clusterPlatform` e.g. AWS, Azure, IBMCloud
+  - `clusterVersion` e.g. 4.13
 
 ??? info "clusterGroup"
     `clusterGroup` is a label used together with RHACM particularly for clusters beyond the first.
@@ -131,15 +136,15 @@ The validated patterns operator provides a framework where a combination of `clu
 
     will result in the correct `clusterGroup` payload being applied ot a given cluster.
 
-In this case my pipelines Helm chart presumes that the storageclass is defined in `{{ .Values.cloudProvider.storageClass }}` so to setup for both IBM Cloud and AWS the following files were defined:
+In this case my pipelines Helm chart presumes that the storageclass is defined in `{{ .Values.cloudProvider.storageClass }}` so to setup for both IBM Cloud and AWS using the `sharedValuesFiles` defined in the example yaml file above I created two files to contain the overrides:
 
-!!! info "`values-AWS.yaml`"
+!!! info "`overrides/values-AWS.yaml`"
     ```yaml
     cloudProvider:
       storageClass: gp3-csi
     ```
 
-!!! info "`values-IBMCloud.yaml`"
+!!! info "`overrides/values-IBMCloud.yaml`"
     ```yaml
     cloudProvider:
       storageClass: ibmc-vpc-block-10iops-tier
@@ -151,6 +156,6 @@ These override any values in the Helm chart's default `Values.yaml` file.
 
 Validated patterns, together with Helm, Argo CD, and RHACM. Provides a powerful tool to achieve consistency across multiple clusters and clouds.
 
-This blog was written based on [this version](https://github.com/butler54/validated-patterns-demos/tree/validated-demos) of my validated-demos repo.
+This blog was written based on [this version](https://github.com/butler54/validated-patterns-demos/tree/validated-demos-blog) of my validated-demos repo.
 
 Thanks to [@beekhof](https://github.com/beekhof) and [@day0hero](https://github.com/day0hero) who spent a considerable amount of time teaching me (and others) about validated patterns.
