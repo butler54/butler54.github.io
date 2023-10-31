@@ -32,7 +32,7 @@ The core [`multicloud-gitops`](https://validatedpatterns.io/patterns/multicloud-
 - A single point for managing both operators and argo applications,
 - Hooks for the procedural steps you just can't get rid of (such as unsealing vault).
 
-The result from an operationl perspective once I have a cluster the only steps I care about are:
+The result from an operational perspective once I have a cluster the only steps I care about are:
 
 1. Cloning a pattern repo - `git clone git@github.com/butler54/validated-patterns-demos`,
 1. Logging into the cluster - `oc login --token=sha256~*** --server=https://URL:PORT`,
