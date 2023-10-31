@@ -2,37 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://chris.thebutlers.me/</loc>
-         <lastmod>2023-10-29</lastmod>
+         <lastmod>2023-10-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/awesome_stuff/</loc>
-         <lastmod>2023-10-29</lastmod>
+         <lastmod>2023-10-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/</loc>
-         <lastmod>2023-10-29</lastmod>
+         <lastmod>2023-10-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/2023/10/27/hello-world/</loc>
-         <lastmod>2023-10-29</lastmod>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/2023/10/30/validated-patterns-for-demos/</loc>
+         <lastmod>2023-10-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/archive/2023/</loc>
-         <lastmod>2023-10-29</lastmod>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/category/validated-patterns/</loc>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/category/gitops/</loc>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/category/openshift/</loc>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/category/demos/</loc>
+         <lastmod>2023-10-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/hello/</loc>
-         <lastmod>2023-10-29</lastmod>
+         <lastmod>2023-10-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/world/</loc>
-         <lastmod>2023-10-29</lastmod>
+         <lastmod>2023-10-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
