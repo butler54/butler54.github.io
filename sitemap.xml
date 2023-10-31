@@ -16,7 +16,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chris.thebutlers.me/blog/2023/10/27/hello-world/</loc>
+         <loc>https://chris.thebutlers.me/blog/2023/02/01/documentation-as-code/</loc>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/2000/01/01/hello-world/</loc>
          <lastmod>2023-10-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -27,6 +32,11 @@
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/archive/2023/</loc>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/archive/2000/</loc>
          <lastmod>2023-10-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -47,6 +57,26 @@
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/demos/</loc>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/category/mkdocs/</loc>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/category/documentation/</loc>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/category/cicd/</loc>
+         <lastmod>2023-10-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chris.thebutlers.me/blog/category/github/</loc>
          <lastmod>2023-10-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
