@@ -76,6 +76,8 @@ site_url: https://chris.thebutlers.me/
 edit_uri: https://github.com/butler54/butler54.github.io/edit/main/docs
 
 theme:
+  icon:
+    logo: material/rocket
   locale: en # The locale for time localizations, default: system's locale
   time_format: '%Y-%m-%d %H:%M:%S' # The format used to display the time
   meta_time_format: '%Y-%m-%d %H:%M:%S'
