@@ -2,11 +2,7 @@
 draft: false
 date: 2023-10-30
 title: Validated patterns for demos
-description: "Upon joining Red Hat as a Chief Architect I've been lucky enough to
-  find some time to deep-dive into our products and upstream. One of the fun challenges
-  that I faced straight away is our demo OpenShift environments, for many reasons,
-  are emphemeral. \n In ephemeral environments GitOps is essential to quickly get
-  to a consistent environment. Enter validated patterns."
+description: "Upon joining Red Hat as a Chief Architect I've been lucky enough to find some time to deep-dive into our products and upstream. One of the fun challenges that I faced straight away is our demo OpenShift environments, for many reasons, are emphemeral. \n In ephemeral environments GitOps is essential to quickly get to a consistent environment. Enter validated patterns."
 author: Chris Butler
 categories:
   - validated-patterns
