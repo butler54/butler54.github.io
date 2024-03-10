@@ -1,8 +1,6 @@
 ---
 title: Documentation as code
-description: AUCloud has relaunched it's documentation site from a closed forum, to
-  an open source website managed as code. Read more about the technology and how the
-  team I worked with  managed it using GitHub and GitHub actions.
+description: AUCloud has relaunched it's documentation site from a closed forum, to an open source website managed as code. Read more about the technology and how the team I worked with  managed it using GitHub and GitHub actions.
 author: Chris Butler
 draft: false
 date: 2023-02-01

@@ -1,5 +1,3 @@
-
-
 ![photo1](../images/000044.jpg){ loading=lazy }
 
 ![photo2](../images/000108490013.jpg){ loading=lazy }
