@@ -19,9 +19,26 @@ markdown_extensions:
 - pymdownx.keys
 - pymdownx.mark
 - pymdownx.tilde
+- md_in_html
+- meta
 - toc:
     permalink: ¤
 plugins:
+- glightbox:
+    touchNavigation: true
+    loop: true
+    effect: zoom
+    slide_effect: slide
+    width: auto
+    height: auto
+    zoomable: true
+    draggable: true
+    # skip_classes:
+    # - custom-skip-class-name
+    auto_caption: true
+    caption_position: bottom
+    background: white
+    shadow: true
 - blog:
     enabled: true
     blog_dir: blog
@@ -98,15 +115,18 @@ theme:
   # Palette toggle for light mode
   - media: "(prefers-color-scheme: light)"
     scheme: default
+    primary: black
+
     toggle:
       icon: material/brightness-7
       name: Switch to dark mode
   # Palette toggle for dark mode
   - media: "(prefers-color-scheme: dark)"
     scheme: slate
+    primary: black
     toggle:
       icon: material/brightness-4
       name: Switch to light mode
 extra:
   generator: false
-copyright: "Copyright &copy; 2023 Chris Butler. \n"
+copyright: "Copyright &copy; 2024 Chris Butler. \n"

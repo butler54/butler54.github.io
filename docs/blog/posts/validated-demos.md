@@ -2,11 +2,7 @@
 draft: false
 date: 2023-10-30
 title: Validated patterns for demos
-description: "Upon joining Red Hat as a Chief Architect I've been lucky enough to
-  find some time to deep-dive into our products and upstream. One of the fun challenges
-  that I faced straight away is our demo OpenShift environments, for many reasons,
-  are emphemeral. \n In ephemeral environments GitOps is essential to quickly get
-  to a consistent environment. Enter validated patterns."
+description: "Upon joining Red Hat as a Chief Architect I've been lucky enough to find some time to deep-dive into our products and upstream. One of the fun challenges that I faced straight away is our demo OpenShift environments, for many reasons, are emphemeral. \n In ephemeral environments GitOps is essential to quickly get to a consistent environment. Enter validated patterns."
 author: Chris Butler
 categories:
   - validated-patterns
@@ -40,14 +36,16 @@ The result from an operational perspective once I have a cluster the only steps 
 1. `./pattern.sh make install`.
 
 ??? info "Podman and bootstrapping on mac os"
-    To run the bootstrap scripts validated patterns presumes that you are using `podman`.
-    Using [brew](https://brew.sh/):
+To run the bootstrap scripts validated patterns presumes that you are using `podman`.
+Using [brew](https://brew.sh/):
 
-    ```bash
-    brew install podman
-    podman machine init
-    podman machine start
-    ```
+````
+```bash
+brew install podman
+podman machine init
+podman machine start
+```
+````
 
 All I have to do is wait and the environment will roll itself out automatically. Using [OpenShift GitOps](https://docs.openshift.com/gitops/latest/understanding_openshift_gitops/about-redhat-openshift-gitops.html) ([Argo CD](https://argo-cd.readthedocs.io/en/stable/)) the deployment rollout can easily be monitored and triaged for errors.
 
@@ -141,12 +139,14 @@ The validated patterns operator provides a framework where a combination of `clu
 to pick up override files if the exist.
 
 ??? info "clusterGroup"
-    `clusterGroup` is a label used together with RHACM particularly for clusters beyond the first.
-    Applying:
+`clusterGroup` is a label used together with RHACM particularly for clusters beyond the first.
+Applying:
 
-    `oc label managedclusters.cluster.open-cluster-management.io/<your-cluster> clusterGroup=<managed-cluster-group>`
+```
+`oc label managedclusters.cluster.open-cluster-management.io/<your-cluster> clusterGroup=<managed-cluster-group>`
 
-    will result in the correct `clusterGroup` payload being applied ot a given cluster.
+will result in the correct `clusterGroup` payload being applied ot a given cluster.
+```
 
 In this case my `pipelines` Helm chart presumes that the storageclass is defined in `{{ .Values.cloudProvider.storageClass }}` so to setup for both IBM Cloud and AWS using the `sharedValuesFiles` defined in the example yaml file above I created two files to contain the overrides:
 
