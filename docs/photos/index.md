@@ -53,7 +53,7 @@ glightbox: false
 
   ______________________________________________________________________
 
-  [![Mt Macedon - Hasselblad 503CM, Kodak Vision 3 250D 70mm](./images/000110900003-website-2-2.jpg)](./Bali.md)
+  [![Leica CL (film), Ilford HP5+, 35mm](./images/000108500021.jpg)](./Bali.md)
 
 - [__Portraits__](./Portraits.md)
 
