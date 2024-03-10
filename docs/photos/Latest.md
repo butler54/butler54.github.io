@@ -2,6 +2,8 @@
 title: Latest
 ---
 
+![Leica CL (film), Ilford HP5+, 35mm](./images/000108500021.jpg){ loading=lazy }
+
 ![Kodak Vision 3 250D 35m](./images/000028-3.jpg){ loading=lazy }
 
 ![Kodak Vision 3 250D 35m](./images/000004-4.jpg){ loading=lazy }

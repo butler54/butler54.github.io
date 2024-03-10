@@ -25,12 +25,6 @@ glightbox: false
 
   [![Kodak Vision 3 250D 35m](./images/000028-3.jpg)](./Japan.md)
 
-- [__Europe__](./Europe.md)
-
-  ______________________________________________________________________
-
-  [![Kodak Vision 3 250D 35m](./images/000028-3.jpg)](./Europe.md)
-
 - [__Melbourne__](./Melbourne.md)
 
   ______________________________________________________________________
