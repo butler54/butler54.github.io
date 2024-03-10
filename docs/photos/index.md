@@ -7,13 +7,11 @@ glightbox: false
     Building this site out
 
 <div class="grid cards" markdown>
--   [__Latest__](./Latest)
+- [__Latest__](./Latest)
 
-```
----
+______________________________________________________________________
 
-[![Kodak Vision 3 250D 35m](./images/000028-3.jpg)](./Latest)
-```
+[![Kodak Vision 3 250D 35m](./images/000028-3.jpg)](./Latest.md)
 
 </div>
 
