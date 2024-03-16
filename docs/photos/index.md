@@ -54,4 +54,10 @@ glightbox: false
 
     [![Leica CL (Film), Ilford HP5+](./images/000108460004.jpg)](./Portraits.md)
 
+-   [__Animals__](./Animals.md)
+
+    ---
+
+    [![Sony Alpha 7 CR, Voighlander Nokton 40mm f1.2](./images/DSC00044-Edit.jpg)](./Animals.md)
+
 </div>

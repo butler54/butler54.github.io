@@ -2,6 +2,8 @@
 title: Latest
 ---
 
+![Sony Alpha 7 CR, Voighlander Nokton 40mm f1.2](./images/DSC00044-Edit.jpg){ loading=lazy }
+
 ![Kodak Vision 3 250D 35m](./images/000021.jpg){ loading=lazy }
 
 ![Kodak Vision 3 250D 35m](./images/000023.jpg){ loading=lazy }
