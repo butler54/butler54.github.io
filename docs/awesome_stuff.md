@@ -4,12 +4,10 @@
 
 A small list of *awesome* things that I have found along my techy journey. Also a better way to remember that github star
 
-
 ## bootc (aka image mode)
 
 - [Fedora bootc examples](https://gitlab.com/fedora/bootc/examples/-/tree/main) - lots of bootc examples for fedora
 - [RHEL bootc examples](https://github.com/redhat-cop/rhel-bootc-examples) - pretty self descriptive
-
 
 ## Command line tools
 
@@ -20,7 +18,6 @@ A small list of *awesome* things that I have found along my techy journey. Also 
 
 - [Mkdocs](https://www.mkdocs.org/) - python based documentation generation
 - [Mkdocs Material](https://squidfunk.github.io/mkdocs-material/) - ever expanding theme
-
 
 ## Github actions
 
