@@ -2,137 +2,110 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://chris.thebutlers.me/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/awesome_stuff/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/2023/02/01/documentation-as-code/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/2000/01/01/hello-world/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/2023/10/30/validated-patterns-for-demos/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/photos/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/photos/Animals/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/photos/Bali/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/photos/Japan/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/photos/Latest/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/photos/Melbourne/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/photos/New_York/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/photos/Portraits/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/photos/Victoria/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/archive/2023/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/archive/2000/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/validated-patterns/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/gitops/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/openshift/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/demos/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/mkdocs/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/documentation/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/cicd/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/github/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/hello/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
          <loc>https://chris.thebutlers.me/blog/category/world/</loc>
-         <lastmod>2024-03-16</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-01-04</lastmod>
     </url>
 </urlset>
