@@ -33,3 +33,6 @@ A small list of *awesome* things that I have found along my techy journey. Also 
 - [`pre-commit`](https://pre-commit.com/)
 - [`mdformat`](https://mdformat.readthedocs.io/en/stable/)
 
+## Virtualization
+
+- [`tart`](https://tart.run/) OSX virtualization. I really *want* to use this, however, the licensing makes me cringe.
