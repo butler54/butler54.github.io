@@ -11,7 +11,7 @@ categories:
   - GitHub
 ---
 
-AUCloud has relaunched it's documentation site from a closed forum, to an open source website managed as code. Read more about the technology and how the team I worked with  managed it using GitHub and GitHub actions.
+AUCloud has relaunched it's documentation site from a closed forum, to an open source website managed as code. Read more about the technology and how the team I worked with managed it using GitHub and GitHub actions.
 
 <!-- more -->
 
@@ -67,10 +67,10 @@ The result is that the website can be updated every 5-10 minutes. Currently the 
 
 Two significant challenges were faced building these pipelines:
 
-- Managing race conditions on the  `gh-pages` branch.
+- Managing race conditions on the `gh-pages` branch.
 - Bi-directional synchronization of git repositories.
 
-#### Managing race conditions on the  `gh-pages` branch
+#### Managing race conditions on the `gh-pages` branch
 
 One gap that we've observed since adopting github actions, is to be careful for introducing any race conditions / circular workflows.
 Github actions does expose [concurrency](https://docs.github.com/en/enterprise-cloud@latest/actions/using-jobs/using-concurrency) control mechanisms. However, when dealing with branch based builds of the website we needed `exactly once` semantics for adding and removing the branch releases.
