@@ -4,8 +4,8 @@ markdown_extensions:
 - footnotes
 - markdown_include.include
 - pymdownx.emoji:
-    emoji_index: !!python/name:material.extensions.emoji.twemoji
-    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+    emoji_index: !!python/name:material.extensions.emoji.twemoji ""
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg ""
 - pymdownx.magiclink
 - pymdownx.superfences
 - pymdownx.tabbed
@@ -69,7 +69,7 @@ plugins:
 - spellcheck:
     backends:
     - codespell:
-        dictionaries: [clear, rare]
+        dictionaries: [ clear, rare ]
     known_words: ../known-words.txt
     # ignore words in <code> tags
     ignore_code: yes
@@ -129,6 +129,11 @@ theme:
     toggle:
       icon: material/brightness-4
       name: Switch to light mode
+validation:
+  omitted_files: warn
+  absolute_links: warn # Or 'relative_to_docs' - new in MkDocs 1.6
+  unrecognized_links: warn
+  anchors: warn # New in MkDocs 1.6
 extra:
   generator: false
-copyright: "Copyright &copy; 2024 Chris Butler. \n"
+copyright: "Copyright &copy; 2024 Chris Butler.\ \n"

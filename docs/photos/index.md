@@ -8,7 +8,7 @@ glightbox: false
 
 <div class="grid cards" markdown>
 
--   [__Latest__](./Latest)
+-   [__Latest__](./Latest.md)
 
     ---
 
