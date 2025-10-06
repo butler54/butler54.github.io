@@ -1,0 +1,38 @@
+# Optional metadata file - only include photos you want to enhance
+# Photos not listed here will just use their filename as the title
+photos:
+  DSC00044-Edit:  # filename without extension
+    title: "Street Portrait Study"
+    description: "Candid street photography capturing everyday moments"
+    camera: "Sony Alpha 7 CR"
+    lens: "Voighlander Nokton 40mm f1.2"
+    location: "Melbourne, Australia"
+    date: "2024-09-01"
+    tags: ["street", "portrait", "melbourne"]
+    featured: true
+    
+  "000021":  # filename without extension (quotes needed if starting with numbers)
+    title: "Golden Hour Architecture"
+    camera: "Leica CL"
+    lens: "Kodak Vision 3 250D"
+    location: "Tokyo, Japan"
+    date: "2024-08-15"
+    tags: ["architecture", "golden-hour"]
+    
+  "000028-3":
+    title: "Urban Reflections"
+    description: "Playing with reflections in the city"
+    camera: "Hasselblad 503CM"
+    lens: "Kodak Vision 3 250D 70mm"
+    location: "New York City"
+    
+  "000044-website-2-2":
+    title: "City Streets"
+    camera: "Kodak Vision 3 250D"
+    location: "Melbourne"
+    
+  "000074-website-2-2":
+    title: "Melbourne Architecture"
+    camera: "Olympus OM1"
+    lens: "Kodak Vision 3 250D"
+    location: "Melbourne, Australia"

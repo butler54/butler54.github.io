@@ -1,2 +1,29 @@
-.cache/
+# Hugo build output
+/public/
+/resources/_gen/
+
+# Hugo cache
+/.hugo_build.lock
+/.cache/
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+
+# Build artifacts
+/test-build/
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Log files
+*.log

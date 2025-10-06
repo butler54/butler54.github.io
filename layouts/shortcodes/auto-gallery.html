@@ -1,0 +1,253 @@
+{{- $rawCollection := .Get "collection" | default (strings.TrimPrefix "photos/" .Page.File.Dir) -}}
+{{- $collection := $rawCollection | strings.TrimSuffix "/" -}}
+{{- $batchSize := .Get "batchSize" | default 12 -}}
+{{- $columns := .Get "columns" | default "md:grid-cols-3 lg:grid-cols-4" -}}
+
+{{- /* Find images in the collection's static folder */ -}}
+{{- $staticPath := printf "static/images/photos/%s" $collection -}}
+{{- $images := slice -}}
+
+{{- /* Get images from static folder */ -}}
+{{- with (readDir $staticPath) -}}
+  {{- range . -}}
+    {{- if and (not .IsDir) (in (slice ".jpg" ".jpeg" ".png" ".webp") (path.Ext .Name | lower)) -}}
+      {{- $images = $images | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Load optional metadata */ -}}
+{{- $metadata := dict -}}
+{{- $metadataFile := printf "content/photos/%s/metadata" $collection -}}
+{{- $yamlPath := printf "%s.yaml" $metadataFile -}}
+{{- $ymlPath := printf "%s.yml" $metadataFile -}}
+{{- $jsonPath := printf "%s.json" $metadataFile -}}
+{{- $tomlPath := printf "%s.toml" $metadataFile -}}
+
+{{- if fileExists $yamlPath -}}
+  {{- $metadata = readFile $yamlPath | transform.Unmarshal -}}
+{{- else if fileExists $ymlPath -}}
+  {{- $metadata = readFile $ymlPath | transform.Unmarshal -}}
+{{- else if fileExists $jsonPath -}}
+  {{- $metadata = readFile $jsonPath | transform.Unmarshal -}}
+{{- else if fileExists $tomlPath -}}
+  {{- $metadata = readFile $tomlPath | transform.Unmarshal -}}
+{{- end -}}
+
+<div class="auto-gallery" 
+     data-collection="{{ $collection }}" 
+     data-batch-size="{{ $batchSize }}">
+  
+  <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 {{ $columns }} gap-4">
+    <!-- Initial batch loaded immediately -->
+    {{- range first $batchSize $images -}}
+      {{- $filename := .Name -}}
+      {{- $imagePath := printf "/images/photos/%s/%s" $collection $filename -}}
+      {{- $imageKey := strings.TrimSuffix (path.Ext $filename) $filename -}}
+      {{- $meta := index $metadata.photos $imageKey -}}
+      
+      <div class="photo-item group relative overflow-hidden rounded-lg cursor-pointer aspect-square bg-gray-100"
+           data-src="{{ $imagePath }}"
+           data-title="{{ if $meta }}{{ $meta.title | default $filename }}{{ else }}{{ $filename }}{{ end }}"
+           data-camera="{{ if $meta }}{{ $meta.camera }}{{ end }}"
+           data-lens="{{ if $meta }}{{ $meta.lens }}{{ end }}"
+           data-location="{{ if $meta }}{{ $meta.location }}{{ end }}"
+           data-date="{{ if $meta }}{{ $meta.date }}{{ end }}"
+           data-description="{{ if $meta }}{{ $meta.description }}{{ end }}">
+        
+        <img src="{{ $imagePath }}" 
+             alt="{{ if $meta }}{{ $meta.title | default $filename }}{{ else }}{{ $filename }}{{ end }}"
+             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+             loading="lazy">
+        
+        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
+          <div class="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <h4 class="text-sm font-medium truncate">
+              {{ if $meta }}{{ $meta.title | default $filename }}{{ else }}{{ $filename }}{{ end }}
+            </h4>
+            {{ if $meta.camera }}
+              <p class="text-xs opacity-80 truncate">{{ $meta.camera }}{{ if $meta.lens }}, {{ $meta.lens }}{{ end }}</p>
+            {{ end }}
+            {{ if $meta.location }}
+              <p class="text-xs opacity-60">{{ $meta.location }}</p>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    {{- end -}}
+  </div>
+  
+  <!-- Hidden images data for infinite scroll -->
+  <script type="application/json" id="remaining-photos-data">
+    {{- $remainingImages := after $batchSize $images -}}
+    {{- $photoData := slice -}}
+    {{- range $remainingImages -}}
+      {{- $filename := .Name -}}
+      {{- $imagePath := printf "/images/photos/%s/%s" $collection $filename -}}
+      {{- $imageKey := strings.TrimSuffix (path.Ext $filename) $filename -}}
+      {{- $meta := index $metadata.photos $imageKey -}}
+      
+      {{- $title := $filename -}}
+      {{- $camera := "" -}}
+      {{- $lens := "" -}}
+      {{- $location := "" -}}
+      {{- $date := "" -}}
+      {{- $description := "" -}}
+      {{- if $meta -}}
+        {{- $title = default $filename $meta.title -}}
+        {{- $camera = default "" $meta.camera -}}
+        {{- $lens = default "" $meta.lens -}}
+        {{- $location = default "" $meta.location -}}
+        {{- $date = default "" $meta.date -}}
+        {{- $description = default "" $meta.description -}}
+      {{- end -}}
+      {{- $photoInfo := dict 
+            "src" $imagePath
+            "filename" $filename
+            "title" $title
+            "camera" $camera
+            "lens" $lens
+            "location" $location
+            "date" $date
+            "description" $description -}}
+      {{- $photoData = $photoData | append $photoInfo -}}
+    {{- end -}}
+    {{- $photoData | jsonify -}}
+  </script>
+  
+  <div id="loading-spinner" class="hidden flex justify-center items-center p-8">
+    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+  </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="photo-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
+  <div class="relative max-w-screen-lg max-h-screen w-full h-full flex items-center justify-center">
+    <button id="close-modal" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-10">&times;</button>
+    <img id="modal-image" src="" alt="" class="max-w-full max-h-full object-contain">
+    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/50 to-transparent p-6 text-white">
+      <h3 id="modal-title" class="text-lg font-medium mb-2"></h3>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
+        <p id="modal-camera" class="text-sm opacity-90"></p>
+        <p id="modal-location" class="text-sm opacity-70"></p>
+      </div>
+      <p id="modal-description" class="text-sm mt-2 opacity-80"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Auto-gallery JavaScript for infinite scroll and lightbox
+document.addEventListener('DOMContentLoaded', function() {
+  const gallery = document.querySelector('.auto-gallery');
+  if (!gallery) return;
+  
+  const photoGrid = document.getElementById('photo-grid');
+  const loadingSpinner = document.getElementById('loading-spinner');
+  const modal = document.getElementById('photo-modal');
+  const modalImage = document.getElementById('modal-image');
+  const modalTitle = document.getElementById('modal-title');
+  const modalCamera = document.getElementById('modal-camera');
+  const modalLocation = document.getElementById('modal-location');
+  const modalDescription = document.getElementById('modal-description');
+  const closeModal = document.getElementById('close-modal');
+  
+  // Get remaining photos data
+  const remainingPhotosData = JSON.parse(document.getElementById('remaining-photos-data').textContent || '[]');
+  const batchSize = parseInt(gallery.dataset.batchSize);
+  let loadedBatches = 1; // First batch already loaded
+  
+  // Infinite scroll setup
+  if (remainingPhotosData.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadNextBatch();
+      }
+    }, { threshold: 0.1 });
+    
+    observer.observe(loadingSpinner);
+    loadingSpinner.classList.remove('hidden');
+  }
+  
+  function loadNextBatch() {
+    const startIndex = (loadedBatches - 1) * batchSize;
+    const batch = remainingPhotosData.slice(startIndex, startIndex + batchSize);
+    
+    if (batch.length === 0) {
+      loadingSpinner.classList.add('hidden');
+      return;
+    }
+    
+    batch.forEach(photo => {
+      const photoElement = createPhotoElement(photo);
+      photoGrid.appendChild(photoElement);
+    });
+    
+    loadedBatches++;
+    
+    if (startIndex + batchSize >= remainingPhotosData.length) {
+      loadingSpinner.classList.add('hidden');
+    }
+  }
+  
+  function createPhotoElement(photo) {
+    const div = document.createElement('div');
+    div.className = 'photo-item group relative overflow-hidden rounded-lg cursor-pointer aspect-square bg-gray-100';
+    div.innerHTML = `
+      <img src="${photo.src}" 
+           alt="${photo.title}"
+           class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+           loading="lazy">
+      <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          <h4 class="text-sm font-medium truncate">${photo.title}</h4>
+          ${photo.camera ? '<p class="text-xs opacity-80 truncate">' + photo.camera + (photo.lens ? ', ' + photo.lens : '') + '</p>' : ''}
+          ${photo.location ? '<p class="text-xs opacity-60">' + photo.location + '</p>' : ''}
+        </div>
+      </div>
+    `;
+    
+    div.addEventListener('click', () => openLightbox(photo));
+    return div;
+  }
+  
+  // Lightbox functionality for initial batch
+  document.querySelectorAll('.photo-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const photo = {
+        src: this.dataset.src || this.querySelector('img').src,
+        title: this.dataset.title,
+        camera: this.dataset.camera,
+        lens: this.dataset.lens,
+        location: this.dataset.location,
+        description: this.dataset.description
+      };
+      openLightbox(photo);
+    });
+  });
+  
+  function openLightbox(photo) {
+    modalImage.src = photo.src;
+    modalTitle.textContent = photo.title || '';
+    modalCamera.textContent = photo.camera ? photo.camera + (photo.lens ? ', ' + photo.lens : '') : '';
+    modalLocation.textContent = photo.location || '';
+    modalDescription.textContent = photo.description || '';
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeLightboxFn() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
+  
+  closeModal.addEventListener('click', closeLightboxFn);
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeLightboxFn();
+  });
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightboxFn();
+  });
+});
+</script>
