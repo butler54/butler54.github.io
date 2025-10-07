@@ -38,6 +38,7 @@ gpg --import butler-c-keys.asc
 ## Usage
 
 This key is used for:
+
 - Email encryption and signing
 - Git commit signing
 - Secure communication
