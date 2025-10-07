@@ -1,0 +1,84 @@
+# Blowfish theme configuration
+colorScheme = "auto"
+defaultAppearance = "light"
+autoSwitchAppearance = true
+
+# Site features
+enableSearch = true
+enableCodeCopy = true
+mainSections = ["blog", "photos"]
+
+# Homepage configuration
+[homepage]
+  layout = "background"
+  homepageImage = "/images/photos/hero-image.jpg"
+  showRecent = true
+  showRecentItems = 6
+
+# Header configuration
+[header]
+  layout = "basic"
+  logo = ""
+  showTitle = true
+
+# Footer configuration
+[footer]
+  showCopyright = true
+  showThemeAttribution = false
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+# Article configuration
+[article]
+  showDate = true
+  showViews = false
+  showLikes = false
+  showDateUpdated = false
+  showAuthor = true
+  showHero = true
+  heroStyle = "background"
+  showBreadcrumbs = true
+  showDraftLabel = true
+  showEdit = false
+  editURL = "https://github.com/butler54/butler54.github.io"
+  editAppendPath = true
+  seriesOpened = false
+  showHeadingAnchors = true
+  showPagination = true
+  invertPagination = false
+  showReadingTime = true
+  showTableOfContents = true
+  showTaxonomies = true
+  showAuthorsBadges = false
+  showWordCount = false
+  showSummary = true
+
+# List page configuration
+[list]
+  showHero = true
+  heroStyle = "background"
+  showBreadcrumbs = true
+  showSummary = true
+  showViews = false
+  showLikes = false
+  showTableOfContents = false
+  showCards = true
+  groupByYear = false
+  cardView = true
+  cardViewScreenWidth = false
+  constrainItemsWidth = false
+
+# Sitemap configuration
+[sitemap]
+  changefreq = "daily"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+# Social links
+[social]
+  github = "butler54"
+  linkedin = "christopherjbutler"
+
+# Analytics (if you want to add later)
+# [fathomAnalytics]
+#   site = "ABCDEFG"

@@ -1,0 +1,73 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "blowfish",
+    "chbutler",
+    "thebutlers",
+    "linkedin",
+    "christopherjbutler",
+    "redhat",
+    "Hasselblad",
+    "Leica",
+    "Voighlander",
+    "Nokton",
+    "Kodak",
+    "Ilford",
+    "OpenShift",
+    "GitOps",
+    "Argo",
+    "ArgoCD",
+    "RHACM",
+    "Ansible",
+    "Kustomize",
+    "Tekton",
+    "MATLAB",
+    "Fortran",
+    "GPUaaS",
+    "mkdocs",
+    "hugo",
+    "YAML",
+    "TOML",
+    "JSON",
+    "mdformat",
+    "fronmatter",
+    "frontmatter",
+    "Bondi",
+    "melbourne",
+    "tokyo",
+    "Kueue",
+    "Codeflare",
+    "CICD",
+    "hyperscalers",
+    "emphemeral",
+    "multicloud",
+    "Multicluster",
+    "storageclass",
+    "storageclasses",
+    "managedclusters",
+    "ibmc",
+    "beekhof",
+    "day0hero"
+  ],
+  "ignoreWords": [],
+  "import": [],
+  "files": [
+    "content/**/*.md",
+    "README.md"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "public/**",
+    "resources/**",
+    ".git/**",
+    "*.min.*"
+  ],
+  "overrides": [
+    {
+      "filename": "content/photos/**/metadata.yaml",
+      "language": "en",
+      "words": ["DSC", "IMG"]
+    }
+  ]
+}

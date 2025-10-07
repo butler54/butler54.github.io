@@ -1,0 +1,38 @@
+{
+  // Markdown linting configuration for markdownlint-cli2
+  "config": {
+    // Disable line length check for blog content (prose can be long)
+    "MD013": false,
+    // Allow inline HTML (needed for Hugo shortcodes)
+    "MD033": false,
+    // Allow duplicate headers (common in blog posts)
+    "MD024": false,
+    // Allow multiple top-level headers (needed for Hugo content)
+    "MD025": false,
+    // Allow bare URLs (common in markdown)
+    "MD034": false,
+    // Allow trailing punctuation in headers
+    "MD026": false,
+    // Allow emphasis markers inside words (for technical terms)
+    "MD036": false,
+    // Allow fenced code blocks without language
+    "MD040": false,
+    // Allow first line in file to not be a top level header
+    "MD041": false,
+    // Allow trailing spaces (some are intentional)
+    "MD009": false,
+    // Allow fenced code blocks without blank lines around them
+    "MD031": false,
+    // Don't require files to end with newline (handled by editors)
+    "MD047": false
+  },
+  "ignores": [
+    "node_modules/**",
+    "public/**",
+    "resources/**"
+  ],
+  "globs": [
+    "content/**/*.md",
+    "README.md"
+  ]
+}

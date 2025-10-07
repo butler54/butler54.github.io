@@ -1,0 +1,44 @@
+/* Custom CSS overrides for Blowfish theme */
+
+/* Fix bullet point indentation on landing page */
+.prose ul,
+.prose ol,
+article ul,
+article ol {
+  margin-left: 1.5rem !important;
+  padding-left: 0 !important;
+}
+
+.prose li,
+article li {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  text-align: left !important;
+}
+
+/* Ensure list markers are properly positioned */
+.prose ul li,
+article ul li {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.prose ol li,
+article ol li {
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+
+/* Override any centering that might be applied to content */
+.prose,
+article {
+  text-align: left;
+}
+
+/* Ensure paragraphs within lists maintain proper indentation */
+.prose li p,
+article li p {
+  margin-left: 0;
+  text-align: left;
+}
+

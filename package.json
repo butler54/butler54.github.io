@@ -1,0 +1,25 @@
+{
+  "name": "butler54-github-io",
+  "version": "1.0.0",
+  "description": "Chris Butler's personal blog and photography site",
+  "scripts": {
+    "serve": "hugo server --port 1313 --buildDrafts --buildFuture",
+    "build": "hugo --minify",
+    "lint": "markdownlint-cli2 \"content/**/*.md\" \"README.md\"",
+    "lint:html": "htmlhint \"public/**/*.html\"",
+    "spell": "cspell \"content/**/*.md\" \"README.md\"",
+    "test": "hugo --destination ./test-build --minify && rm -rf ./test-build"
+  },
+  "devDependencies": {
+    "cspell": "^8.19.4",
+    "htmlhint": "^1.7.1",
+    "markdownlint-cli2": "^0.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/butler54/butler54.github.io"
+  },
+  "author": "Chris Butler",
+  "license": "MIT"
+}
+

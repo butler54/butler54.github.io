@@ -1,0 +1,26 @@
+# Main navigation menu
+[[main]]
+  name = "Blog"
+  pageRef = "blog"
+  weight = 10
+
+[[main]]
+  name = "Photos"
+  pageRef = "photos"
+  weight = 20
+
+[[main]]
+  name = "About"
+  pageRef = "/"
+  weight = 30
+
+# Footer menu
+[[footer]]
+  name = "LinkedIn"
+  url = "https://www.linkedin.com/in/christopherjbutler/"
+  weight = 10
+
+[[footer]]
+  name = "GitHub"
+  url = "https://github.com/butler54"
+  weight = 20

@@ -1,0 +1,58 @@
+// Custom SCSS overrides for Blowfish theme
+
+// Fix bullet point indentation on landing page  
+.prose {
+  ul, ol {
+    margin-left: 1.5rem !important;
+    padding-left: 0 !important;
+  }
+
+  li {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+  }
+
+  ul li {
+    list-style-type: disc;
+    list-style-position: outside;
+  }
+
+  ol li {
+    list-style-type: decimal;
+    list-style-position: outside;
+  }
+}
+
+// Override any centering that might be applied to main content
+article {
+  ul, ol {
+    margin-left: 1.5rem !important;
+    padding-left: 0 !important;
+  }
+
+  li {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+
+    p {
+      margin-left: 0;
+      text-align: left;
+    }
+  }
+
+  ul li {
+    list-style-type: disc;
+    list-style-position: outside;
+  }
+
+  ol li {
+    list-style-type: decimal;
+    list-style-position: outside;
+  }
+
+  // Ensure text alignment is left for all content
+  text-align: left;
+}
+

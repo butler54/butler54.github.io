@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(hugo:*)",
+      "Bash(cat:*)",
+      "Bash(podman machine:*)",
+      "Bash(export:*)",
+      "Bash(act:*)",
+      "Bash(cp:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
