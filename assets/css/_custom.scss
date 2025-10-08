@@ -56,3 +56,86 @@ article {
   text-align: left;
 }
 
+// Fix code block styling for dark mode consistency
+// Ensure code blocks have proper contrast in both light and dark modes
+.highlight,
+pre,
+code {
+  background-color: var(--code-bg, #f6f8fa) !important;
+  color: var(--code-text, #24292f) !important;
+}
+
+// Dark mode specific overrides
+[data-theme="dark"] {
+  .highlight,
+  pre,
+  code {
+    background-color: var(--code-bg-dark, #0d1117) !important;
+    color: var(--code-text-dark, #e6edf3) !important;
+  }
+
+  // Ensure code blocks maintain proper styling in dark mode
+  .highlight pre {
+    background-color: #0d1117 !important;
+    color: #e6edf3 !important;
+  }
+
+  .highlight .hljs {
+    background-color: #0d1117 !important;
+    color: #e6edf3 !important;
+  }
+
+  // Fix inline code styling for dark mode
+  code:not(pre code) {
+    background-color: #21262d !important;
+    color: #f0f6fc !important;
+    border: 1px solid #30363d;
+  }
+
+  // Ensure proper contrast for code block borders
+  .highlight {
+    border: 1px solid #30363d;
+    border-radius: 6px;
+  }
+
+  // Fix syntax highlighting colors for dark mode
+  .highlight {
+    .hljs-comment,
+    .hljs-quote {
+      color: #8b949e !important;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-subst {
+      color: #ff7b72 !important;
+    }
+
+    .hljs-string,
+    .hljs-doctag {
+      color: #a5d6ff !important;
+    }
+
+    .hljs-number,
+    .hljs-literal {
+      color: #79c0ff !important;
+    }
+
+    .hljs-title,
+    .hljs-section,
+    .hljs-selector-id {
+      color: #d2a8ff !important;
+    }
+
+    .hljs-attr,
+    .hljs-attribute {
+      color: #7ee787 !important;
+    }
+
+    .hljs-variable,
+    .hljs-template-variable {
+      color: #ffa657 !important;
+    }
+  }
+}
+

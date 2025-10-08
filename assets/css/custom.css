@@ -42,3 +42,82 @@ article li p {
   text-align: left;
 }
 
+/* Fix code block styling for dark mode consistency */
+/* Ensure code blocks have proper contrast in both light and dark modes */
+.highlight,
+pre,
+code {
+  background-color: var(--code-bg, #f6f8fa) !important;
+  color: var(--code-text, #24292f) !important;
+}
+
+/* Dark mode specific overrides */
+[data-theme="dark"] .highlight,
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+  background-color: var(--code-bg-dark, #0d1117) !important;
+  color: var(--code-text-dark, #e6edf3) !important;
+}
+
+/* Ensure code blocks maintain proper styling in dark mode */
+[data-theme="dark"] .highlight pre {
+  background-color: #0d1117 !important;
+  color: #e6edf3 !important;
+}
+
+[data-theme="dark"] .highlight .hljs {
+  background-color: #0d1117 !important;
+  color: #e6edf3 !important;
+}
+
+/* Fix inline code styling for dark mode */
+[data-theme="dark"] code:not(pre code) {
+  background-color: #21262d !important;
+  color: #f0f6fc !important;
+  border: 1px solid #30363d;
+}
+
+/* Ensure proper contrast for code block borders */
+[data-theme="dark"] .highlight {
+  border: 1px solid #30363d;
+  border-radius: 6px;
+}
+
+/* Fix syntax highlighting colors for dark mode */
+[data-theme="dark"] .highlight .hljs-comment,
+[data-theme="dark"] .highlight .hljs-quote {
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .highlight .hljs-keyword,
+[data-theme="dark"] .highlight .hljs-selector-tag,
+[data-theme="dark"] .highlight .hljs-subst {
+  color: #ff7b72 !important;
+}
+
+[data-theme="dark"] .highlight .hljs-string,
+[data-theme="dark"] .highlight .hljs-doctag {
+  color: #a5d6ff !important;
+}
+
+[data-theme="dark"] .highlight .hljs-number,
+[data-theme="dark"] .highlight .hljs-literal {
+  color: #79c0ff !important;
+}
+
+[data-theme="dark"] .highlight .hljs-title,
+[data-theme="dark"] .highlight .hljs-section,
+[data-theme="dark"] .highlight .hljs-selector-id {
+  color: #d2a8ff !important;
+}
+
+[data-theme="dark"] .highlight .hljs-attr,
+[data-theme="dark"] .highlight .hljs-attribute {
+  color: #7ee787 !important;
+}
+
+[data-theme="dark"] .highlight .hljs-variable,
+[data-theme="dark"] .highlight .hljs-template-variable {
+  color: #ffa657 !important;
+}
+
