@@ -98,43 +98,104 @@ code {
     border-radius: 6px;
   }
 
-  // Fix syntax highlighting colors for dark mode
+  // Comprehensive dark mode syntax highlighting theme
   .highlight {
+    // Base colors
+    .hljs {
+      background: #0d1117 !important;
+      color: #e6edf3 !important;
+    }
+
+    // Comments and quotes
     .hljs-comment,
     .hljs-quote {
       color: #8b949e !important;
+      font-style: italic;
     }
 
+    // Keywords and control structures
     .hljs-keyword,
     .hljs-selector-tag,
-    .hljs-subst {
+    .hljs-subst,
+    .hljs-built_in,
+    .hljs-type {
       color: #ff7b72 !important;
+      font-weight: bold;
     }
 
+    // Strings and text
     .hljs-string,
-    .hljs-doctag {
+    .hljs-doctag,
+    .hljs-meta-string {
       color: #a5d6ff !important;
     }
 
+    // Numbers and literals
     .hljs-number,
-    .hljs-literal {
+    .hljs-literal,
+    .hljs-symbol {
       color: #79c0ff !important;
     }
 
+    // Titles, sections, and classes
     .hljs-title,
     .hljs-section,
-    .hljs-selector-id {
+    .hljs-selector-id,
+    .hljs-selector-class,
+    .hljs-selector-attr,
+    .hljs-selector-pseudo {
       color: #d2a8ff !important;
     }
 
+    // Attributes and properties
     .hljs-attr,
-    .hljs-attribute {
+    .hljs-attribute,
+    .hljs-property {
       color: #7ee787 !important;
     }
 
+    // Variables and templates
     .hljs-variable,
-    .hljs-template-variable {
+    .hljs-template-variable,
+    .hljs-name {
       color: #ffa657 !important;
+    }
+
+    // Functions and methods
+    .hljs-function,
+    .hljs-title.function_ {
+      color: #d2a8ff !important;
+    }
+
+    // Tags and markup
+    .hljs-tag,
+    .hljs-name.tag {
+      color: #7ee787 !important;
+    }
+
+    // Operators and punctuation
+    .hljs-operator,
+    .hljs-punctuation {
+      color: #e6edf3 !important;
+    }
+
+    // Special elements
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: bold;
+    }
+
+    // Code block specific styling
+    .hljs-code {
+      color: #e6edf3 !important;
+    }
+
+    // Ensure all text elements have proper contrast
+    .hljs * {
+      color: inherit !important;
     }
   }
 }

@@ -51,12 +51,12 @@ code {
   color: var(--code-text, #24292f) !important;
 }
 
-/* Dark mode specific overrides */
+/* Dark mode specific overrides - Force dark theme */
 [data-theme="dark"] .highlight,
 [data-theme="dark"] pre,
 [data-theme="dark"] code {
-  background-color: var(--code-bg-dark, #0d1117) !important;
-  color: var(--code-text-dark, #e6edf3) !important;
+  background-color: #0d1117 !important;
+  color: #e6edf3 !important;
 }
 
 /* Ensure code blocks maintain proper styling in dark mode */
@@ -66,6 +66,18 @@ code {
 }
 
 [data-theme="dark"] .highlight .hljs {
+  background-color: #0d1117 !important;
+  color: #e6edf3 !important;
+}
+
+/* Override any light theme styles that might persist */
+[data-theme="dark"] .highlight * {
+  background-color: transparent !important;
+}
+
+/* Force dark mode theme for all code elements */
+[data-theme="dark"] pre code,
+[data-theme="dark"] .highlight code {
   background-color: #0d1117 !important;
   color: #e6edf3 !important;
 }
@@ -83,41 +95,104 @@ code {
   border-radius: 6px;
 }
 
-/* Fix syntax highlighting colors for dark mode */
-[data-theme="dark"] .highlight .hljs-comment,
-[data-theme="dark"] .highlight .hljs-quote {
-  color: #8b949e !important;
-}
+/* Comprehensive dark mode syntax highlighting theme */
+[data-theme="dark"] .highlight {
+  /* Base colors */
+  .hljs {
+    background: #0d1117 !important;
+    color: #e6edf3 !important;
+  }
 
-[data-theme="dark"] .highlight .hljs-keyword,
-[data-theme="dark"] .highlight .hljs-selector-tag,
-[data-theme="dark"] .highlight .hljs-subst {
-  color: #ff7b72 !important;
-}
+  /* Comments and quotes */
+  .hljs-comment,
+  .hljs-quote {
+    color: #8b949e !important;
+    font-style: italic;
+  }
 
-[data-theme="dark"] .highlight .hljs-string,
-[data-theme="dark"] .highlight .hljs-doctag {
-  color: #a5d6ff !important;
-}
+  /* Keywords and control structures */
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-subst,
+  .hljs-built_in,
+  .hljs-type {
+    color: #ff7b72 !important;
+    font-weight: bold;
+  }
 
-[data-theme="dark"] .highlight .hljs-number,
-[data-theme="dark"] .highlight .hljs-literal {
-  color: #79c0ff !important;
-}
+  /* Strings and text */
+  .hljs-string,
+  .hljs-doctag,
+  .hljs-meta-string {
+    color: #a5d6ff !important;
+  }
 
-[data-theme="dark"] .highlight .hljs-title,
-[data-theme="dark"] .highlight .hljs-section,
-[data-theme="dark"] .highlight .hljs-selector-id {
-  color: #d2a8ff !important;
-}
+  /* Numbers and literals */
+  .hljs-number,
+  .hljs-literal,
+  .hljs-symbol {
+    color: #79c0ff !important;
+  }
 
-[data-theme="dark"] .highlight .hljs-attr,
-[data-theme="dark"] .highlight .hljs-attribute {
-  color: #7ee787 !important;
-}
+  /* Titles, sections, and classes */
+  .hljs-title,
+  .hljs-section,
+  .hljs-selector-id,
+  .hljs-selector-class,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo {
+    color: #d2a8ff !important;
+  }
 
-[data-theme="dark"] .highlight .hljs-variable,
-[data-theme="dark"] .highlight .hljs-template-variable {
-  color: #ffa657 !important;
+  /* Attributes and properties */
+  .hljs-attr,
+  .hljs-attribute,
+  .hljs-property {
+    color: #7ee787 !important;
+  }
+
+  /* Variables and templates */
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-name {
+    color: #ffa657 !important;
+  }
+
+  /* Functions and methods */
+  .hljs-function,
+  .hljs-title.function_ {
+    color: #d2a8ff !important;
+  }
+
+  /* Tags and markup */
+  .hljs-tag,
+  .hljs-name.tag {
+    color: #7ee787 !important;
+  }
+
+  /* Operators and punctuation */
+  .hljs-operator,
+  .hljs-punctuation {
+    color: #e6edf3 !important;
+  }
+
+  /* Special elements */
+  .hljs-emphasis {
+    font-style: italic;
+  }
+
+  .hljs-strong {
+    font-weight: bold;
+  }
+
+  /* Code block specific styling */
+  .hljs-code {
+    color: #e6edf3 !important;
+  }
+
+  /* Ensure all text elements have proper contrast */
+  .hljs * {
+    color: inherit !important;
+  }
 }
 
