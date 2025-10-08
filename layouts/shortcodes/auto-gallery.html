@@ -3,12 +3,12 @@
 {{- $batchSize := .Get "batchSize" | default 12 -}}
 {{- $columns := .Get "columns" | default "md:grid-cols-3 lg:grid-cols-4" -}}
 
-{{- /* Find images in the collection's static folder */ -}}
-{{- $staticPath := printf "static/images/photos/%s" $collection -}}
+{{- /* Find images - use assets folder for processing */ -}}
+{{- $assetsPath := printf "assets/images/photos/%s" $collection -}}
 {{- $images := slice -}}
 
-{{- /* Get images from static folder */ -}}
-{{- with (readDir $staticPath) -}}
+{{- /* Read images from assets folder */ -}}
+{{- with (readDir $assetsPath) -}}
   {{- range . -}}
     {{- if and (not .IsDir) (in (slice ".jpg" ".jpeg" ".png" ".webp") (path.Ext .Name | lower)) -}}
       {{- $images = $images | append . -}}
@@ -42,37 +42,23 @@
     <!-- Initial batch loaded immediately -->
     {{- range first $batchSize $images -}}
       {{- $filename := .Name -}}
-      {{- $imagePath := printf "/images/photos/%s/%s" $collection $filename -}}
+      {{- $imgResource := resources.Get (printf "images/photos/%s/%s" $collection $filename) -}}
+      {{- $fullImage := $imgResource -}}
+      {{- $thumbnail := $imgResource.Fit "600x600 q85" -}}
+
       {{- $imageKey := strings.TrimSuffix (path.Ext $filename) $filename -}}
       {{- $meta := index $metadata.photos $imageKey -}}
-      
-      <div class="photo-item group relative overflow-hidden rounded-lg cursor-pointer aspect-square bg-gray-100"
-           data-src="{{ $imagePath }}"
+
+      <div class="photo-item"
+           data-src="{{ $fullImage.RelPermalink }}"
            data-title="{{ if $meta }}{{ $meta.title | default $filename }}{{ else }}{{ $filename }}{{ end }}"
            data-camera="{{ if $meta }}{{ $meta.camera }}{{ end }}"
            data-lens="{{ if $meta }}{{ $meta.lens }}{{ end }}"
            data-location="{{ if $meta }}{{ $meta.location }}{{ end }}"
            data-date="{{ if $meta }}{{ $meta.date }}{{ end }}"
            data-description="{{ if $meta }}{{ $meta.description }}{{ end }}">
-        
-        <img src="{{ $imagePath }}" 
-             alt="{{ if $meta }}{{ $meta.title | default $filename }}{{ else }}{{ $filename }}{{ end }}"
-             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-             loading="lazy">
-        
-        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
-          <div class="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-            <h4 class="text-sm font-medium truncate">
-              {{ if $meta }}{{ $meta.title | default $filename }}{{ else }}{{ $filename }}{{ end }}
-            </h4>
-            {{ if $meta.camera }}
-              <p class="text-xs opacity-80 truncate">{{ $meta.camera }}{{ if $meta.lens }}, {{ $meta.lens }}{{ end }}</p>
-            {{ end }}
-            {{ if $meta.location }}
-              <p class="text-xs opacity-60">{{ $meta.location }}</p>
-            {{ end }}
-          </div>
-        </div>
+        <img src="{{ $thumbnail.RelPermalink }}"
+             alt="{{ if $meta }}{{ $meta.title | default $filename }}{{ else }}{{ $filename }}{{ end }}">
       </div>
     {{- end -}}
   </div>
@@ -83,10 +69,13 @@
     {{- $photoData := slice -}}
     {{- range $remainingImages -}}
       {{- $filename := .Name -}}
-      {{- $imagePath := printf "/images/photos/%s/%s" $collection $filename -}}
+      {{- $imgResource := resources.Get (printf "images/photos/%s/%s" $collection $filename) -}}
+      {{- $fullImage := $imgResource -}}
+      {{- $thumbnail := $imgResource.Fit "600x600 q85" -}}
+
       {{- $imageKey := strings.TrimSuffix (path.Ext $filename) $filename -}}
       {{- $meta := index $metadata.photos $imageKey -}}
-      
+
       {{- $title := $filename -}}
       {{- $camera := "" -}}
       {{- $lens := "" -}}
@@ -101,8 +90,9 @@
         {{- $date = default "" $meta.date -}}
         {{- $description = default "" $meta.description -}}
       {{- end -}}
-      {{- $photoInfo := dict 
-            "src" $imagePath
+      {{- $photoInfo := dict
+            "src" $fullImage.RelPermalink
+            "thumbnail" $thumbnail.RelPermalink
             "filename" $filename
             "title" $title
             "camera" $camera
@@ -121,18 +111,18 @@
 </div>
 
 <!-- Lightbox Modal -->
-<div id="photo-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
-  <div class="relative max-w-screen-lg max-h-screen w-full h-full flex items-center justify-center">
-    <button id="close-modal" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-10">&times;</button>
-    <img id="modal-image" src="" alt="" class="max-w-full max-h-full object-contain">
-    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/50 to-transparent p-6 text-white">
-      <h3 id="modal-title" class="text-lg font-medium mb-2"></h3>
-      <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
-        <p id="modal-camera" class="text-sm opacity-90"></p>
-        <p id="modal-location" class="text-sm opacity-70"></p>
-      </div>
-      <p id="modal-description" class="text-sm mt-2 opacity-80"></p>
+<div id="photo-modal" class="hidden">
+  <button id="close-modal">&times;</button>
+  <button id="modal-prev" class="modal-nav">‹</button>
+  <button id="modal-next" class="modal-nav">›</button>
+  <img id="modal-image" src="" alt="">
+  <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 2rem; color: white; z-index: 100000;">
+    <h3 id="modal-title" style="font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem;"></h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+      <p id="modal-camera" style="font-size: 0.875rem; opacity: 0.9;"></p>
+      <p id="modal-location" style="font-size: 0.875rem; opacity: 0.7;"></p>
     </div>
+    <p id="modal-description" style="font-size: 0.875rem; margin-top: 0.5rem; opacity: 0.8;"></p>
   </div>
 </div>
 
@@ -151,9 +141,23 @@ document.addEventListener('DOMContentLoaded', function() {
   const modalLocation = document.getElementById('modal-location');
   const modalDescription = document.getElementById('modal-description');
   const closeModal = document.getElementById('close-modal');
-  
+  const modalPrev = document.getElementById('modal-prev');
+  const modalNext = document.getElementById('modal-next');
+
+  // Track all photos and current index
+  let allPhotos = [];
+  let currentPhotoIndex = 0;
+
   // Get remaining photos data
-  const remainingPhotosData = JSON.parse(document.getElementById('remaining-photos-data').textContent || '[]');
+  let remainingPhotosData = JSON.parse(document.getElementById('remaining-photos-data').textContent || '[]');
+  // Handle double-encoding edge case
+  if (typeof remainingPhotosData === 'string') {
+    remainingPhotosData = JSON.parse(remainingPhotosData);
+  }
+  // Ensure it's an array
+  if (!Array.isArray(remainingPhotosData)) {
+    remainingPhotosData = [];
+  }
   const batchSize = parseInt(gallery.dataset.batchSize);
   let loadedBatches = 1; // First batch already loaded
   
@@ -181,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
     batch.forEach(photo => {
       const photoElement = createPhotoElement(photo);
       photoGrid.appendChild(photoElement);
+      allPhotos.push(photo);
     });
     
     loadedBatches++;
@@ -192,36 +197,41 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function createPhotoElement(photo) {
     const div = document.createElement('div');
-    div.className = 'photo-item group relative overflow-hidden rounded-lg cursor-pointer aspect-square bg-gray-100';
-    div.innerHTML = `
-      <img src="${photo.src}" 
-           alt="${photo.title}"
-           class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-           loading="lazy">
-      <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
-        <div class="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <h4 class="text-sm font-medium truncate">${photo.title}</h4>
-          ${photo.camera ? '<p class="text-xs opacity-80 truncate">' + photo.camera + (photo.lens ? ', ' + photo.lens : '') + '</p>' : ''}
-          ${photo.location ? '<p class="text-xs opacity-60">' + photo.location + '</p>' : ''}
-        </div>
-      </div>
-    `;
-    
-    div.addEventListener('click', () => openLightbox(photo));
+    div.className = 'photo-item';
+    div.dataset.src = photo.src;
+    div.dataset.title = photo.title;
+    div.dataset.camera = photo.camera;
+    div.dataset.lens = photo.lens;
+    div.dataset.location = photo.location;
+    div.dataset.description = photo.description;
+
+    const img = document.createElement('img');
+    img.src = photo.thumbnail || photo.src;
+    img.alt = photo.title;
+    div.appendChild(img);
+
+    const index = allPhotos.length - 1;
+    div.addEventListener('click', () => {
+      currentPhotoIndex = index;
+      openLightbox(photo);
+    });
     return div;
   }
   
-  // Lightbox functionality for initial batch
-  document.querySelectorAll('.photo-item').forEach(item => {
+  // Build initial photos array
+  document.querySelectorAll('.photo-item').forEach((item, index) => {
+    const photo = {
+      src: item.dataset.src || item.querySelector('img').src,
+      title: item.dataset.title,
+      camera: item.dataset.camera,
+      lens: item.dataset.lens,
+      location: item.dataset.location,
+      description: item.dataset.description
+    };
+    allPhotos.push(photo);
+
     item.addEventListener('click', function() {
-      const photo = {
-        src: this.dataset.src || this.querySelector('img').src,
-        title: this.dataset.title,
-        camera: this.dataset.camera,
-        lens: this.dataset.lens,
-        location: this.dataset.location,
-        description: this.dataset.description
-      };
+      currentPhotoIndex = index;
       openLightbox(photo);
     });
   });
@@ -234,20 +244,47 @@ document.addEventListener('DOMContentLoaded', function() {
     modalDescription.textContent = photo.description || '';
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    updateNavButtons();
   }
-  
+
   function closeLightboxFn() {
     modal.classList.add('hidden');
     document.body.style.overflow = 'auto';
   }
-  
+
+  function showNextPhoto() {
+    if (currentPhotoIndex < allPhotos.length - 1) {
+      currentPhotoIndex++;
+      openLightbox(allPhotos[currentPhotoIndex]);
+    }
+  }
+
+  function showPrevPhoto() {
+    if (currentPhotoIndex > 0) {
+      currentPhotoIndex--;
+      openLightbox(allPhotos[currentPhotoIndex]);
+    }
+  }
+
+  function updateNavButtons() {
+    modalPrev.style.display = currentPhotoIndex > 0 ? 'block' : 'none';
+    modalNext.style.display = currentPhotoIndex < allPhotos.length - 1 ? 'block' : 'none';
+  }
+
   closeModal.addEventListener('click', closeLightboxFn);
+  modalPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrevPhoto(); });
+  modalNext.addEventListener('click', (e) => { e.stopPropagation(); showNextPhoto(); });
+
   modal.addEventListener('click', function(e) {
-    if (e.target === modal) closeLightboxFn();
+    if (e.target === modal || e.target === modalImage) closeLightboxFn();
   });
-  
+
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightboxFn();
+    if (!modal.classList.contains('hidden')) {
+      if (e.key === 'Escape') closeLightboxFn();
+      if (e.key === 'ArrowLeft') showPrevPhoto();
+      if (e.key === 'ArrowRight') showNextPhoto();
+    }
   });
 });
 </script>

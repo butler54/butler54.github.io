@@ -6,6 +6,10 @@
 /.hugo_build.lock
 /.cache/
 
+# Photo images are in assets/, not static/
+# Hugo processes images from assets/ to generate optimized versions
+static/images/photos/
+
 # Node.js dependencies
 node_modules/
 npm-debug.log*
