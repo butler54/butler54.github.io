@@ -50,6 +50,9 @@
     "beekhof",
     "day0hero",
     "nvme"
+    "bootc",
+    "Direnv",
+    "buildah"
   ],
   "ignoreWords": [],
   "import": [],
