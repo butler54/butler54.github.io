@@ -94,10 +94,10 @@ new-post: ## Create a new blog post (usage: make new-post TITLE="My New Post")
 new-gallery: ## Create a new photo gallery (usage: make new-gallery NAME="gallery-name")
 	@if [ -z "$(NAME)" ]; then echo "❌ Please provide a gallery name: make new-gallery NAME=\"gallery-name\""; exit 1; fi
 	@mkdir -p content/photos/$(NAME)
-	@mkdir -p static/images/photos/$(NAME)
+	@mkdir -p assets/images/photos/$(NAME)
 	@echo '---\ntitle: "$(NAME)"\ndescription: "Description for $(NAME) gallery"\ndate: $(shell date +%Y-%m-%d)\nshowTableOfContents: false\nshowBreadcrumbs: true\nshowDate: true\nshowAuthor: false\n---\n\n{{< auto-gallery collection="$(NAME)" >}}' > content/photos/$(NAME)/index.md
 	@echo "✅ New gallery '$(NAME)' created"
-	@echo "   - Add photos to: static/images/photos/$(NAME)/"
+	@echo "   - Add photos to: assets/images/photos/$(NAME)/"
 	@echo "   - Edit content at: content/photos/$(NAME)/index.md"
 
 # Deploymentmake 
@@ -118,10 +118,10 @@ mod-vendor: ## Vendor Hugo modules
 	@echo "✅ Hugo modules vendored"
 
 # Image optimization
-optimize-images: ## Optimize images in static/images/photos/ (requires imagemagick)
+optimize-images: ## Optimize images in assets/images/photos/ (requires imagemagick)
 	@echo "Optimizing images..."
 	@command -v convert >/dev/null 2>&1 || (echo "❌ ImageMagick not found. Install with: brew install imagemagick" && exit 1)
-	@find static/images/photos -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" | while read img; do \
+	@find assets/images/photos -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" | while read img; do \
 		echo "Optimizing $$img..."; \
 		convert "$$img" -quality 85 -strip "$$img.tmp" && mv "$$img.tmp" "$$img"; \
 	done

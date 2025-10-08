@@ -45,11 +45,12 @@ The core feature is an automated photo gallery system with these components:
 
 1. **Directory Structure**: Photo galleries have parallel structures:
    - `content/photos/{collection}/index.md` - Gallery description and frontmatter
-   - `static/images/photos/{collection}/` - Actual image files
+   - `assets/images/photos/{collection}/` - Source image files (processed by Hugo)
    - `content/photos/{collection}/metadata.yaml` - Optional photo metadata
 
 2. **auto-gallery shortcode** (`layouts/shortcodes/auto-gallery.html`):
-   - Automatically discovers images in `static/images/photos/{collection}/`
+   - Automatically discovers images in `assets/images/photos/{collection}/`
+   - Uses Hugo's image processing to generate optimized thumbnails (600x600 Fit)
    - Implements infinite scroll (loads 12 images at a time by default)
    - Supports optional metadata from YAML/JSON/TOML files
    - Provides lightbox modal for viewing images
@@ -60,6 +61,7 @@ The core feature is an automated photo gallery system with these components:
 3. **gallery-collections shortcode** (`layouts/shortcodes/gallery-collections.html`):
    - Displays all available photo galleries as cards
    - Automatically finds all collections under `content/photos/`
+   - Uses Hugo's image processing to generate featured image thumbnails (600x600 Fill)
 
 4. **Metadata System**: Photos can have metadata in `metadata.yaml`:
    ```yaml
@@ -101,11 +103,11 @@ The core feature is an automated photo gallery system with these components:
 When adding a new photo gallery:
 
 1. Create the gallery structure: `make new-gallery NAME="gallery-name"`
-2. Add images to `static/images/photos/gallery-name/`
+2. Add images to `assets/images/photos/gallery-name/`
 3. Optionally add metadata in `content/photos/gallery-name/metadata.yaml`
 4. The `auto-gallery` shortcode is already included in the generated index.md
 
-Images are automatically discovered at build time - no manual listing required.
+Images are automatically discovered at build time - no manual listing required. Hugo processes images from `assets/` to generate optimized thumbnails and full-size versions in the build output.
 
 ## Linting & Quality
 
@@ -119,5 +121,7 @@ Images are automatically discovered at build time - no manual listing required.
 - Always run quality checks before committing: `make check`
 - The site uses lazy loading and infinite scroll - initial batch loads 12 photos, rest load on scroll
 - Photo filenames become default titles if metadata is not provided
-- All image paths in shortcodes are relative to `static/` directory
+- **Image paths**: Source images live in `assets/images/photos/` (processed by Hugo), NOT in `static/`
+- Hugo's image processing generates optimized versions at build time (thumbnails, full-size)
+- Processed images are cached in `resources/_gen/` (gitignored) for faster rebuilds
 - The Blowfish theme provides the base layout and styling - custom shortcodes extend functionality

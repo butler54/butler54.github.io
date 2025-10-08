@@ -22,7 +22,7 @@ summaryLength = 30
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
-    style = "github"
+    noClasses = false
     lineNos = true
 
 [outputs]

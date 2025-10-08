@@ -6,7 +6,17 @@
       "Bash(podman machine:*)",
       "Bash(export:*)",
       "Bash(act:*)",
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(make:*)",
+      "Bash(pkill:*)",
+      "Bash(curl:*)",
+      "Bash(open http://localhost:1313/photos/latest/)",
+      "Bash(open /tmp/test.html)",
+      "Bash(find:*)",
+      "Read(//tmp/**)",
+      "Bash(rm:*)",
+      "Bash(git rm:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

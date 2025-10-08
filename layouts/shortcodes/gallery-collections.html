@@ -4,27 +4,28 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
   {{- range $photoSections -}}
     {{- $collection := strings.TrimPrefix "photos/" .File.Dir | strings.TrimSuffix "/" -}}
-    {{- $imagesPath := printf "static/images/photos/%s" $collection -}}
-    {{- $featuredImage := "" -}}
+    {{- $imagesPath := printf "assets/images/photos/%s" $collection -}}
+    {{- $featuredImageResource := "" -}}
     {{- $imageCount := 0 -}}
-    
+
     {{- /* Find first image as featured and count total images */ -}}
     {{- with (readDir $imagesPath) -}}
       {{- range . -}}
         {{- if and (not .IsDir) (in (slice ".jpg" ".jpeg" ".png" ".webp") (path.Ext .Name | lower)) -}}
           {{- $imageCount = add $imageCount 1 -}}
-          {{- if eq $featuredImage "" -}}
-            {{- $featuredImage = printf "/images/photos/%s/%s" $collection .Name -}}
+          {{- if eq $featuredImageResource "" -}}
+            {{- $featuredImageResource = resources.Get (printf "images/photos/%s/%s" $collection .Name) -}}
           {{- end -}}
         {{- end -}}
       {{- end -}}
     {{- end -}}
     
     <a href="{{ .RelPermalink }}" class="group block bg-white dark:bg-neutral-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      {{- if $featuredImage -}}
+      {{- if $featuredImageResource -}}
+        {{- $thumbnail := $featuredImageResource.Fill "600x600 q85" -}}
         <div class="aspect-square bg-gray-200 dark:bg-gray-700">
-          <img src="{{ $featuredImage }}" 
-               alt="{{ .Title }}" 
+          <img src="{{ $thumbnail.RelPermalink }}"
+               alt="{{ .Title }}"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
         </div>
       {{- else -}}
