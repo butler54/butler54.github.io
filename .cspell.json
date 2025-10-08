@@ -48,7 +48,10 @@
     "managedclusters",
     "ibmc",
     "beekhof",
-    "day0hero"
+    "day0hero",
+    "bootc",
+    "Direnv",
+    "buildah"
   ],
   "ignoreWords": [],
   "import": [],

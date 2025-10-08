@@ -10,9 +10,19 @@
   weight = 20
 
 [[main]]
+  name = "Awesome Stuff"
+  pageRef = "awesome_stuff"
+  weight = 30
+
+[[main]]
+  name = "PGP Keys"
+  pageRef = "pgp-keys"
+  weight = 40
+
+[[main]]
   name = "About"
   pageRef = "/"
-  weight = 30
+  weight = 50
 
 # Footer menu
 [[footer]]
