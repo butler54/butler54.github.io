@@ -35,7 +35,7 @@ The [agent install](https://docs.redhat.com/en/documentation/openshift_container
 3. Mount the iso on all hosts.
 4. Wait for the installer to finish and collect credentials.
 
-This is approachable across many enviroments as virtually all enterprise hardware can boot an iso hosted remotely. 
+This is approachable across many environments as virtually all enterprise hardware can boot an iso hosted remotely. 
 This is particularly true for testing on Single Node OpenShift (SNO) as it's only one ISO to mount.
 
 The challenge I faced is the agent installer was not enough to give me a clean slate for storage.
@@ -89,12 +89,12 @@ The ignition configuration below allows us to wipe all the disks.
 
 This, with the correct device names, will wipe all the partition tables ensuring LVM Operator will behave as expected.
 
-The question is how to provide it to the OpenShift installer. One approach is use the 'any platform' install process and [host the ignition configuration](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/installing_on_any_platform/installing-platform-agnostic#installation-user-infra-generate-k8s-manifest-ignition_installing-platform-agnostic).
+The question is how to provide it to the OpenShift installer. One approach is to use the 'any platform' install process and [host the ignition configuration](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/installing_on_any_platform/installing-platform-agnostic#installation-user-infra-generate-k8s-manifest-ignition_installing-platform-agnostic).
 
-The other simpler quick hack it to realise that the agent iso embeds it's own ignition information and it is really easy to customize.
+The other simpler quick hack is to realize that the agent iso embeds its own ignition information and it is really easy to customize.
 
 ## Customizing the agent installer iso
-`coreos-installer` is available on RHEL, centos-streams and fedora. It provides tooling to manipulate the installer ISOs safely.
+`coreos-installer` is available on RHEL, CentOS Stream, and Fedora. It provides tooling to manipulate the installer ISOs safely.
 
 Assuming I already have my `agent-config.yaml`, `install-config.yaml` and the ignition fragment above `wipe-disks.ign`:
 ```bash
@@ -115,7 +115,7 @@ jq -s '.[0] * .[1]' base.ign wipe-disks.ign > combined.ign
 
 coreos-installer iso ignition embed -i ./combined.ign -f -o sno.iso agent.x86_64.iso
 ```
-note that the `-f` force command is needed to override the base ignition. Now you have a new iso that ensures you clean out your system allowing stable and repeatable installs. What's even better is the `iso` is reusable in the environment so moving forward.
+Note that the `-f` force command is needed to override the base ignition. Now you have a new ISO that ensures you clean out your system, allowing stable and repeatable installs. What's even better is that the ISO is reusable in the environment going forward.
 
 
 

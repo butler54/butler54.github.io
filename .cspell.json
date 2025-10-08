@@ -48,7 +48,8 @@
     "managedclusters",
     "ibmc",
     "beekhof",
-    "day0hero"
+    "day0hero",
+    "nvme"
   ],
   "ignoreWords": [],
   "import": [],
