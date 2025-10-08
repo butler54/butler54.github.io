@@ -19,7 +19,6 @@ I've been using [validated patterns](https://validatedpatterns.io/patterns/) ext
 
 <!-- more -->
 
-
 Like many organizations the easiest place for me to test at Red Hat is in the cloud.
 Our [demo platform](https://demo.redhat.com/) ([GitHub](https://github.com/rhpds)) makes it incredibly easy to provision environments. 
 While developing the [confidential containers validated pattern](https://github.com/validatedpatterns/coco-pattern) I quickly started [using (and templating)](https://github.com/validatedpatterns/coco-pattern/tree/main/rhdp) `openshift-installer` CLI do 'IPI' installs - the installer configures everything it needs to deploy OpenShift clusters to just big enough for what I needed.
@@ -94,6 +93,7 @@ The question is how to provide it to the OpenShift installer. One approach is to
 The other simpler quick hack is to realize that the agent iso embeds its own ignition information and it is really easy to customize.
 
 ## Customizing the agent installer iso
+
 `coreos-installer` is available on RHEL, CentOS Stream, and Fedora. It provides tooling to manipulate the installer ISOs safely.
 
 Assuming I already have my `agent-config.yaml`, `install-config.yaml` and the ignition fragment above `wipe-disks.ign`:
@@ -116,9 +116,3 @@ jq -s '.[0] * .[1]' base.ign wipe-disks.ign > combined.ign
 coreos-installer iso ignition embed -i ./combined.ign -f -o sno.iso agent.x86_64.iso
 ```
 Note that the `-f` force command is needed to override the base ignition. Now you have a new ISO that ensures you clean out your system, allowing stable and repeatable installs. What's even better is that the ISO is reusable in the environment going forward.
-
-
-
-
-
-
