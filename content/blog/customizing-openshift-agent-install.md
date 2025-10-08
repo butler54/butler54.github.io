@@ -12,7 +12,6 @@ categories:
 
 ---
 
-# Customizing Red Hat OpenShift agent installs for repeatable cluster builds on bare metal
 
 Red Hat OpenShift provides lots of different install mechanisms to cater to different use cases. 
 I've been using [validated patterns](https://validatedpatterns.io/patterns/) extensively for building reference architectures and test systems. One challenge has been how to get repeatable build processes on bare metal. This blog describes how I've done this in one our technology labs.
