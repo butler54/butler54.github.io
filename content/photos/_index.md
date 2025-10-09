@@ -5,6 +5,7 @@ showTableOfContents: false
 showBreadcrumbs: false
 showDate: false
 showAuthor: false
+showCards: false
 ---
 
 Welcome to my photography collection. Each gallery represents different projects, locations, or themes in my photographic journey.

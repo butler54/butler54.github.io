@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <header>
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+    {{ if .Description }}
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400">
+        {{ .Description }}
+      </div>
+    {{ end }}
+  </header>
+
+  <section class="mt-8 w-full max-w-7xl mx-auto">
+    {{ .Content }}
+  </section>
+{{ end }}
