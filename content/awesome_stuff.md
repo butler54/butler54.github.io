@@ -5,14 +5,16 @@ description: "A collection of awesome tools and resources I've discovered"
 
 # Awesome stuff
 
-## About this page
-
 A small list of *awesome* things that I have found along my techy journey. Also a better way to remember that github star
 
-## bootc (aka image mode)
+## Confidential computing
+- [Trustee](https://github.com/confidential-containers/trustee) - A remote attestation key broker service.
 
+
+## bootc (aka image mode)
+- [Bootc](https://docs.fedoraproject.org/en-US/bootc/) - A mechanism for defining operating systems via container images
 - [Fedora bootc examples](https://gitlab.com/fedora/bootc/examples/-/tree/main) - lots of bootc examples for fedora
-- [RHEL bootc examples](https://github.com/redhat-cop/rhel-bootc-examples) - pretty self descriptive
+- [RHEL bootc examples](https://github.com/redhat-cop/rhel-bootc-examples) - pretty self descriptive.
 
 ## Command line tools
 
