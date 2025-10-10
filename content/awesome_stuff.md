@@ -12,6 +12,7 @@ A small list of *awesome* things that I have found along my techy journey. Also 
 
 
 ## bootc (aka image mode)
+
 - [Bootc](https://docs.fedoraproject.org/en-US/bootc/) - A mechanism for defining operating systems via container images
 - [Fedora bootc examples](https://gitlab.com/fedora/bootc/examples/-/tree/main) - lots of bootc examples for fedora
 - [RHEL bootc examples](https://github.com/redhat-cop/rhel-bootc-examples) - pretty self descriptive.
