@@ -280,3 +280,22 @@ article li p {
   background: rgba(255, 255, 255, 0.3) !important;
 }
 
+/* Widen article content on single pages for better code block display */
+@media (min-width: 853px) {
+  article #single_header {
+    max-width: 90ch !important;
+  }
+
+  article section.prose > div {
+    max-width: 90ch !important;
+  }
+
+  article .article-content {
+    max-width: 90ch !important;
+  }
+
+  article > footer {
+    max-width: 90ch !important;
+  }
+}
+
