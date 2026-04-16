@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "cspell": "^8.19.4",
-    "htmlhint": "^1.7.1",
+    "htmlhint": "^1.9.2",
     "markdownlint-cli2": "^0.22.0"
   },
   "repository": {
