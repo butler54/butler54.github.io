@@ -1,5 +1,5 @@
 ---
-title: "Experiences using and hardening RHEL image mode"
+title: "Hardening RHEL image mode for mission critical environments"
 description: "How to enforce supply chain integrity on RHEL image mode (bootc) appliances using cosign signature verification, SELinux lockdown, and filesystem immutability, and where the ecosystem is headed with composefs and IMA."
 author: "Chris Butler"
 date: 2026-03-25
