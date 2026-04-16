@@ -17,7 +17,7 @@ AUCloud has relaunched it's documentation site from a closed forum, to an open s
 
 ## Attribution
 
-I wrote this blog article originally on [AUCloud's Documentation site](https://docs.australiacloud.com.au/latest/Blog/documentation_as_opensource/), with the source format [here](https://github.com/aucloud/aucloud.github.io/blob/main/docs/Blog/documentation_as_opensource.md). This article therefore is licensed under [CC-by-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+I wrote this blog article originally on [AUCloud's Documentation site](https://docs.australiacloud.com.au/latest/Blog/documentation_as_opensource/), with the [source format on GitHub](https://github.com/aucloud/aucloud.github.io/blob/main/docs/Blog/documentation_as_opensource.md). This article therefore is licensed under [CC-by-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ## Improving client experience using open source
 

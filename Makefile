@@ -40,7 +40,7 @@ deps: ## Install required tools and dependencies
 	@command -v hugo >/dev/null 2>&1 || (echo "❌ Hugo not found. Install from https://gohugo.io/installation/" && exit 1)
 	@command -v npm >/dev/null 2>&1 || (echo "❌ npm not found. Install Node.js from https://nodejs.org/" && exit 1)
 	@echo "Installing Node.js packages..."
-	@npm install --save-dev markdownlint-cli2 cspell htmlhint
+	@npm install
 	@echo "✅ Dependencies installed"
 
 # Linting
