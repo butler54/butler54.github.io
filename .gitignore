@@ -25,6 +25,9 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Claude Code
+.claude/
+
 # Temporary files
 *.tmp
 *.temp
