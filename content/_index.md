@@ -20,7 +20,10 @@ Today I'm refining my mission at Red Hat. Interesting things I've been working o
 
 If any of this sounds interesting please reach out via [LinkedIn](https://www.linkedin.com/in/christopherjbutler/).
 
-## Projects I'm actively working on
+## Projects I'm actively working on:
 
-- [Validated patterns demos](https://github.com/butler54/validated-patterns-demos) - demo scenarios for work running on openshift
-- [mdformat fronmatter](https://github.com/butler54/mdformat-frontmatter) - formatting utility
+- [Confidential Containers Validated Pattern](https://github.com/validatedpatterns/coco-pattern)
+- [Hardened Bootc build](https://github.com/tempest-concorde/rhel-dev/)
+- [Compliance trestle](https://github.com/oscal-compass/compliance-trestle)
+- [Zero Trust Validated Pattern](https://github.com/validatedpatterns/layered-zero-trust)
+- [mdformat fronmatter](https://github.com/butler54/mdformat-frontmatter) (needs some love)
