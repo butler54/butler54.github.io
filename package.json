@@ -13,7 +13,7 @@
   "devDependencies": {
     "cspell": "^10.0.0",
     "htmlhint": "^1.9.2",
-    "markdownlint-cli2": "^0.22.0"
+    "markdownlint-cli2": "^0.22.1"
   },
   "repository": {
     "type": "git",
