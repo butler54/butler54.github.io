@@ -11,7 +11,7 @@
     "test": "hugo --destination ./test-build --minify && rm -rf ./test-build"
   },
   "devDependencies": {
-    "cspell": "^10.0.0",
+    "cspell": "^10.2.2",
     "htmlhint": "^1.9.2",
     "markdownlint-cli2": "^0.22.0"
   },
